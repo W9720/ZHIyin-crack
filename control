@@ -1,0 +1,9 @@
+Package: com.Xamy.weeklyvip
+Name: WeeklyVIP
+Depends: mobilesubstrate, firmware (>= 15.0)
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Unlock VIP until 2099 and change username
+Maintainer: Xamy
+Author: Xamy
+Section: Tweaks
