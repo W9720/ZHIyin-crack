@@ -15,5 +15,5 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 after-install::
 	install.exec "killall -9 Weekly 2>/dev/null || true"
 
-SUBPROJECTS += weeklyvipprefs
-include $(THEOS_MAKE_PATH)/aggregate.mk
+# SUBPROJECTS += weeklyvipprefs
+# include $(THEOS_MAKE_PATH)/aggregate.mk
