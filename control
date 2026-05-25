@@ -1,4 +1,4 @@
-Package: com.Xamy.weeklyvip
+Package: com.xamy.weeklyvip
 Name: WeeklyVIP
 Depends: mobilesubstrate, firmware (>= 15.0)
 Version: 1.0.0
