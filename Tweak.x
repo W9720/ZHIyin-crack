@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 %hook UserDataData
 
 - (BOOL)isVip {
