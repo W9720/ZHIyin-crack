@@ -4,11 +4,11 @@ PACKAGE_VERSION = 1.0.0
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = WeeklyVIP
+TWEAK_NAME = weeklyvip
 
-WeeklyVIP_FILES = Tweak.x
-WeeklyVIP_CFLAGS = -fobjc-arc
-WeeklyVIP_FRAMEWORKS = UIKit Foundation
+weeklyvip_FILES = Tweak.x
+weeklyvip_CFLAGS = -fobjc-arc
+weeklyvip_FRAMEWORKS = UIKit Foundation
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
