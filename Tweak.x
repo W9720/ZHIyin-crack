@@ -98,6 +98,68 @@
     return YES;
 }
 
++ (void)saveInfo:(id)a0 {
+    if ([a0 isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dict = [a0 mutableCopy];
+        [dict setObject:@YES forKey:@"isVip"];
+        [dict setObject:@(4102358399.0) forKey:@"vipTime"];
+        [dict setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
+        [dict setObject:@"喜爱民谣破解 免费分享" forKey:@"uname"];
+        [dict setObject:@(999999) forKey:@"vipOverDay"];
+        [dict setObject:@(999999) forKey:@"limitbook"];
+        [dict setObject:@(999999) forKey:@"limitcollect"];
+        [dict setObject:@(999999) forKey:@"limitfocus"];
+        [dict setObject:@(999999.0) forKey:@"coin"];
+        [dict setObject:@(999999.0) forKey:@"cgold"];
+        %orig(dict);
+        return;
+    }
+    %orig;
+}
+
++ (void)saveSimpleUInfo:(id)a0 {
+    if ([a0 isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dict = [a0 mutableCopy];
+        [dict setObject:@YES forKey:@"isVip"];
+        [dict setObject:@(4102358399.0) forKey:@"vipTime"];
+        [dict setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
+        %orig(dict);
+        return;
+    }
+    %orig;
+}
+
++ (void)getRealTimeUserData:(id /* block */)a0 {
+    if (a0) {
+        NSDictionary *fakeData = @{
+            @"isVip": @YES,
+            @"vipTime": @(4102358399.0),
+            @"vipEnvaildTime": @"2099-12-31",
+            @"uname": @"喜爱民谣破解 免费分享",
+            @"vipOverDay": @(999999),
+            @"vipState": @(1)
+        };
+        ((void (^)(id))a0)(fakeData);
+        return;
+    }
+    %orig;
+}
+
++ (id)getUserInfo {
+    id info = %orig;
+    if ([info isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dict = [info mutableCopy];
+        [dict setObject:@YES forKey:@"isVip"];
+        [dict setObject:@(4102358399.0) forKey:@"vipTime"];
+        [dict setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
+        [dict setObject:@"喜爱民谣破解 免费分享" forKey:@"uname"];
+        [dict setObject:@(999999) forKey:@"vipOverDay"];
+        [dict setObject:@(1) forKey:@"vipState"];
+        return dict;
+    }
+    return info;
+}
+
 %end
 
 %hook ZYComicDetailInfo
@@ -235,3 +297,18 @@
 }
 
 %end
+
+%hook MineViewController
+
+- (void)checkVIPExpiry {
+    return;
+}
+
+- (void)showVipExpireHintAlertTitle:(id)a0 subTitle:(id)a1 {
+    return;
+}
+
+%end
+
+%ctor {
+}
