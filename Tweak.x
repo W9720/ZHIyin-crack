@@ -22,9 +22,12 @@
     if ([a0 isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *dict = [a0 mutableCopy];
         [dict setObject:@YES forKey:@"isVip"];
+        [dict setObject:@YES forKey:@"isvip"];
         [dict setObject:@(4102358399.0) forKey:@"vipTime"];
+        [dict setObject:@"2099-12-31" forKey:@"vipValidTime"];
         [dict setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
         [dict setObject:@"喜爱民谣破解 免费分享" forKey:@"uname"];
+        [dict setObject:@"喜爱民谣破解 免费分享" forKey:@"username"];
         [dict setObject:@(999999) forKey:@"vipOverDay"];
         [dict setObject:@(1) forKey:@"vipState"];
         [dict setObject:@(999999) forKey:@"limitbook"];
@@ -32,6 +35,8 @@
         [dict setObject:@(999999) forKey:@"limitfocus"];
         [dict setObject:@(999999.0) forKey:@"coin"];
         [dict setObject:@(999999.0) forKey:@"cgold"];
+        [dict setObject:@(999999) forKey:@"kmhCoins"];
+        [dict setObject:@(999999) forKey:@"starCoin"];
         %orig(dict);
         return;
     }
@@ -42,7 +47,9 @@
     if ([a0 isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *dict = [a0 mutableCopy];
         [dict setObject:@YES forKey:@"isVip"];
+        [dict setObject:@YES forKey:@"isvip"];
         [dict setObject:@(4102358399.0) forKey:@"vipTime"];
+        [dict setObject:@"2099-12-31" forKey:@"vipValidTime"];
         [dict setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
         [dict setObject:@(1) forKey:@"vipState"];
         %orig(dict);
@@ -56,9 +63,12 @@
         void (^block)(id) = a3;
         NSDictionary *fakeInfo = @{
             @"isVip": @YES,
+            @"isvip": @YES,
             @"vipTime": @(4102358399.0),
+            @"vipValidTime": @"2099-12-31",
             @"vipEnvaildTime": @"2099-12-31",
             @"uname": @"喜爱民谣破解 免费分享",
+            @"username": @"喜爱民谣破解 免费分享",
             @"vipOverDay": @(999999),
             @"vipState": @(1),
             @"limitbook": @(999999),
@@ -79,9 +89,12 @@
     if (a0) {
         NSDictionary *fakeData = @{
             @"isVip": @YES,
+            @"isvip": @YES,
             @"vipTime": @(4102358399.0),
+            @"vipValidTime": @"2099-12-31",
             @"vipEnvaildTime": @"2099-12-31",
             @"uname": @"喜爱民谣破解 免费分享",
+            @"username": @"喜爱民谣破解 免费分享",
             @"vipOverDay": @(999999),
             @"vipState": @(1)
         };
@@ -96,9 +109,12 @@
     if ([info isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *dict = [info mutableCopy];
         [dict setObject:@YES forKey:@"isVip"];
+        [dict setObject:@YES forKey:@"isvip"];
         [dict setObject:@(4102358399.0) forKey:@"vipTime"];
+        [dict setObject:@"2099-12-31" forKey:@"vipValidTime"];
         [dict setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
         [dict setObject:@"喜爱民谣破解 免费分享" forKey:@"uname"];
+        [dict setObject:@"喜爱民谣破解 免费分享" forKey:@"username"];
         [dict setObject:@(999999) forKey:@"vipOverDay"];
         [dict setObject:@(1) forKey:@"vipState"];
         return dict;
@@ -127,11 +143,19 @@
     return 4102358399.0;
 }
 
+- (NSString *)vipValidTime {
+    return @"2099-12-31";
+}
+
 - (NSString *)vipEnvaildTime {
     return @"2099-12-31";
 }
 
 - (NSString *)uname {
+    return @"喜爱民谣破解 免费分享";
+}
+
+- (NSString *)username {
     return @"喜爱民谣破解 免费分享";
 }
 
@@ -187,12 +211,25 @@
     _vipTime = 4102358399.0;
 }
 
+- (void)setVipValidTime:(NSString *)vipValidTime {
+    if (self->vipValidTime) [self->vipValidTime release];
+    self->vipValidTime = [@"2099-12-31" copy];
+}
+
 - (void)setVipEnvaildTime:(NSString *)vipEnvaildTime {
-    _vipEnvaildTime = @"2099-12-31";
+    if (self->vipEnvaildTime) [self->vipEnvaildTime release];
+    self->vipEnvaildTime = [@"2099-12-31" copy];
 }
 
 - (void)setUname:(NSString *)uname {
-    _uname = @"喜爱民谣破解 免费分享";
+    if (self->uname) [self->uname release];
+    self->uname = [@"喜爱民谣破解 免费分享" copy];
+}
+
+- (void)setUsername:(NSString *)username {
+    if ([self respondsToSelector:@selector(username)]) {
+        objc_setAssociatedObject(self, @selector(username), @"喜爱民谣破解 免费分享", OBJC_ASSOCIATION_COPY_NONATOMIC);
+    }
 }
 
 %end
@@ -207,6 +244,10 @@
     return @"喜爱民谣破解 免费分享";
 }
 
+- (NSString *)username {
+    return @"喜爱民谣破解 免费分享";
+}
+
 - (long long)overduecoin {
     return 999999;
 }
@@ -216,7 +257,14 @@
 }
 
 - (void)setUname:(NSString *)uname {
-    _Uname = @"喜爱民谣破解 免费分享";
+    if (self->Uname) [self->Uname release];
+    self->Uname = [@"喜爱民谣破解 免费分享" copy];
+}
+
+- (void)setUsername:(NSString *)username {
+    if ([self respondsToSelector:@selector(username)]) {
+        objc_setAssociatedObject(self, @selector(username), @"喜爱民谣破解 免费分享", OBJC_ASSOCIATION_COPY_NONATOMIC);
+    }
 }
 
 %end
@@ -263,9 +311,12 @@
     if ([a0 isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *mutableInfo = [(NSDictionary *)a0 mutableCopy];
         [mutableInfo setObject:@YES forKey:@"isVip"];
+        [mutableInfo setObject:@YES forKey:@"isvip"];
         [mutableInfo setObject:@(4102358399.0) forKey:@"vipTime"];
+        [mutableInfo setObject:@"2099-12-31" forKey:@"vipValidTime"];
         [mutableInfo setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
         [mutableInfo setObject:@"喜爱民谣破解 免费分享" forKey:@"uname"];
+        [mutableInfo setObject:@"喜爱民谣破解 免费分享" forKey:@"username"];
         [mutableInfo setObject:@(999999) forKey:@"vipOverDay"];
         [mutableInfo setObject:@(1) forKey:@"vipState"];
         %orig(mutableInfo);
@@ -326,6 +377,10 @@
     return @"喜爱民谣破解 免费分享";
 }
 
+- (NSString *)username {
+    return @"喜爱民谣破解 免费分享";
+}
+
 %end
 
 %hook MyDynamicModel
@@ -343,6 +398,10 @@
 }
 
 - (NSString *)username {
+    return @"喜爱民谣破解 免费分享";
+}
+
+- (NSString *)uname {
     return @"喜爱民谣破解 免费分享";
 }
 
@@ -378,6 +437,10 @@
     return @"喜爱民谣破解 免费分享";
 }
 
+- (NSString *)username {
+    return @"喜爱民谣破解 免费分享";
+}
+
 %end
 
 %hook BookHeader
@@ -408,6 +471,36 @@
 
 - (BOOL)isVipFree {
     return YES;
+}
+
+%end
+
+%hook NSObject
+
+- (id)valueForKey:(id)a0 {
+    id result = %orig;
+    
+    if ([a0 isEqualToString:@"isVip"] || [a0 isEqualToString:@"isvip"]) {
+        return @YES;
+    }
+    if ([a0 isEqualToString:@"vipTime"] || [a0 isEqualToString:@"vip_time"]) {
+        return @(4102358399.0);
+    }
+    if ([a0 isEqualToString:@"vipValidTime"] || [a0 isEqualToString:@"vip_valid_time"] || 
+        [a0 isEqualToString:@"vipEnvaildTime"] || [a0 isEqualToString:@"vipEnvaild_time"]) {
+        return @"2099-12-31";
+    }
+    if ([a0 isEqualToString:@"vipState"] || [a0 isEqualToString:@"vip_state"]) {
+        return @(1);
+    }
+    if ([a0 isEqualToString:@"vipOverDay"] || [a0 isEqualToString:@"vip_over_day"]) {
+        return @(999999);
+    }
+    if ([a0 isEqualToString:@"uname"] || [a0 isEqualToString:@"username"]) {
+        return @"喜爱民谣破解 免费分享";
+    }
+    
+    return result;
 }
 
 %end
