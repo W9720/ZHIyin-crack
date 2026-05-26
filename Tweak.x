@@ -129,6 +129,28 @@
     %orig;
 }
 
++ (void)getUserInfoWithPlat:(id)a0 token:(id)a1 uid:(long long)a2 completion:(id)a3 {
+    if (a3) {
+        void (^block)(id) = a3;
+        NSDictionary *fakeInfo = @{
+            @"isVip": @YES,
+            @"vipTime": @(4102358399.0),
+            @"vipEnvaildTime": @"2099-12-31",
+            @"uname": @"喜爱民谣破解 免费分享",
+            @"vipOverDay": @(999999),
+            @"vipState": @(1),
+            @"limitbook": @(999999),
+            @"limitcollect": @(999999),
+            @"limitfocus": @(999999),
+            @"coin": @(999999.0),
+            @"cgold": @(999999.0)
+        };
+        block(fakeInfo);
+        return;
+    }
+    %orig;
+}
+
 + (void)getRealTimeUserData:(id /* block */)a0 {
     if (a0) {
         NSDictionary *fakeData = @{
@@ -305,6 +327,66 @@
 }
 
 - (void)showVipExpireHintAlertTitle:(id)a0 subTitle:(id)a1 {
+    return;
+}
+
+%end
+
+%hook MineHeaderView
+
+- (void)config:(id)a0 {
+    %orig;
+    if ([a0 isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *userInfo = (NSDictionary *)a0;
+        if ([[userInfo objectForKey:@"isVip"] boolValue] == NO) {
+            NSMutableDictionary *mutableInfo = [userInfo mutableCopy];
+            [mutableInfo setObject:@YES forKey:@"isVip"];
+            [mutableInfo setObject:@(4102358399.0) forKey:@"vipTime"];
+            [mutableInfo setObject:@"2099-12-31" forKey:@"vipEnvaildTime"];
+            [mutableInfo setObject:@"喜爱民谣破解 免费分享" forKey:@"uname"];
+            %orig(mutableInfo);
+            return;
+        }
+    }
+}
+
+%end
+
+%hook FunVipCell
+
+- (void)configWithModel:(id)a0 {
+    %orig;
+}
+
+%end
+
+%hook VipCell
+
+- (void)configWithModel:(id)a0 {
+    %orig;
+}
+
+%end
+
+%hook KMVipDeadAlertView
+
+- (void)show {
+    return;
+}
+
+%end
+
+%hook KMVipInvaildAlertView
+
+- (void)show {
+    return;
+}
+
+%end
+
+%hook VipSubscribePopView
+
+- (void)show {
     return;
 }
 
