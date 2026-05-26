@@ -46,7 +46,6 @@
 
 - (void)vip_interceptRequest:(NSURLRequest *)request {
     NSURL *url = request.URL;
-    NSString *urlString = url.absoluteString;
     
     NSMutableDictionary *fakeResponse = [NSMutableDictionary dictionary];
     
